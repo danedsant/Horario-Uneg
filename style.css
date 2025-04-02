@@ -1,11 +1,13 @@
+/* Variables de color */
 :root {
     --background-color: #282828;
-    --neon-blue: #00ccff;
+    --neon-blue: #00ccff; /* Azul celeste neón */
     --neon-blue-darker: #00aacc;
     --text-color: #ffffff;
     --border-color: #ffffff;
 }
 
+/* Estilos base */
 body {
     margin: 0;
     padding: 20px;
@@ -16,94 +18,115 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    flex-direction: column;
+    flex-direction: column; /* Para centrar el contenedor */
 }
 
 .container {
     text-align: center;
     width: 95%;
-    max-width: 1000px;
+    max-width: 1000px; /* Ajusta según necesidad */
 }
 
+/* Estilo del Título Principal */
 .title-neon {
     font-size: 3em;
     margin-bottom: 30px;
     text-transform: uppercase;
-    animation: pulse-text-strong 1.5s infinite alternate;
+    animation: pulse-text-strong 1.5s infinite alternate; /* Animación más notable para el título */
 }
 
+/* Estilo base para texto con neón sutil */
 .neon-text {
     color: var(--text-color);
+    /* Sombra sutil para legibilidad */
     text-shadow:
         0 0 2px var(--neon-blue),
         0 0 5px var(--neon-blue);
 }
 
+/* Tabla */
 #schedule-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Une los bordes */
     margin: 20px 0;
-    table-layout: fixed;
+    table-layout: fixed; /* Asegura columnas de ancho uniforme */
 }
 
+/* Celdas de la tabla (encabezados y datos) */
 th, td {
-    border: 1px solid var(--border-color); 
-    padding: 12px 8px;
+    border: 1px solid var(--border-color); /* Borde base blanco */
+    padding: 12px 8px; /* Espaciado interno */
     text-align: center;
-    min-height: 50px; 
-    word-wrap: break-word;
-    position: relative; 
+    min-height: 50px; /* Altura mínima para cada celda */
+    word-wrap: break-word; /* Para que el texto largo no desborde */
+    position: relative; /* Necesario para el efecto neón */
 }
 
+/* Estilo Neón Pulsante para Bordes */
 .neon-border {
-    border-color: transparent; 
-    box-shadow: 
-        0 0 3px var(--border-color), 
-        0 0 5px var(--neon-blue), 
-        0 0 8px var(--neon-blue),
-        inset 0 0 5px var(--neon-blue);
-    animation: pulse-border 2s infinite alternate;
+    border-color: transparent; /* Ocultamos el borde sólido base */
+    box-shadow: /* Múltiples sombras para crear el brillo */
+        0 0 3px var(--border-color), /* Borde blanco sutil */
+        0 0 5px var(--neon-blue),    /* Resplandor neón interior */
+        0 0 8px var(--neon-blue),   /* Resplandor neón medio */
+        inset 0 0 5px var(--neon-blue); /* Resplandor interior */
+    animation: pulse-border 2s infinite alternate; /* Animación */
 }
 
+/* Encabezados de la tabla */
 th {
-    background-color: rgba(0, 204, 255, 0.1);
+    background-color: rgba(0, 204, 255, 0.1); /* Fondo ligeramente azulado */
     font-weight: bold;
 }
 
+/* Celda de la hora */
 .time-slot, .time-header {
-    min-width: 80px;
+    min-width: 80px; /* Ancho mínimo para la columna de hora */
     font-weight: bold;
     font-size: 0.9em;
 }
 
+/* Celdas de materia */
 .subject-cell {
-    cursor: pointer; 
-    transition: background-color 0.3s ease; 
-    color: var(--text-color); 
+    cursor: pointer; /* Indica que se puede hacer clic */
+    transition: background-color 0.3s ease; /* Transición suave */
+    color: var(--text-color); /* Asegura texto blanco */
+     /* Aplicamos el neon text sutil aquí también si queremos */
     text-shadow:
         0 0 2px var(--neon-blue),
         0 0 5px var(--neon-blue);
 }
 
 .subject-cell:hover {
-    background-color: rgba(0, 204, 255, 0.1); 
+    background-color: rgba(0, 204, 255, 0.1); /* Resaltado suave al pasar el ratón */
 }
 
+/* --- ESTILOS AÑADIDOS/MODIFICADOS --- */
+
+/* Estilo para celdas de materia seleccionadas */
 .subject-cell.selected {
-    background-color: rgba(0, 204, 255, 0.3) !important;
-    outline: 2px solid var(--neon-blue); 
-    outline-offset: -2px;
+    background-color: rgba(0, 204, 255, 0.3) !important; /* Fondo más resaltado (importante para sobreescribir hover)*/
+    outline: 2px solid var(--neon-blue); /* Un borde exterior para mayor claridad */
+    outline-offset: -2px; /* Ajusta el borde para que esté dentro */
 }
 
+/* Ocultar visualmente celdas que están cubiertas por rowspan */
+/* Usamos el estilo inline que pone el JS, pero podemos añadir más si es necesario */
 td[style*="display: none"] {
-
+  /* border: none; Podríamos quitar el borde si quisiéramos */
+  /* Podríamos añadir más estilos si hiciera falta */
+  /* El JS ya se encarga de poner display: none */
 }
 
+/* Asegurar que las celdas con rowspan mantengan el estilo y alineación */
 .subject-cell[rowspan] {
-    vertical-align: top;
-    padding-top: 15px; 
+    vertical-align: top; /* Alinear texto arriba en celdas fusionadas */
+    padding-top: 15px; /* Más padding superior para centrar visualmente */
 }
+/* ------------------------------------ */
 
+
+/* Animación de pulso para bordes */
 @keyframes pulse-border {
     from {
         box-shadow:
@@ -115,12 +138,13 @@ td[style*="display: none"] {
     to {
         box-shadow:
             0 0 5px var(--border-color),
-            0 0 10px var(--neon-blue-darker), /
+            0 0 10px var(--neon-blue-darker), /* Intensifica un poco */
             0 0 15px var(--neon-blue-darker),
             inset 0 0 8px var(--neon-blue-darker);
     }
 }
 
+/* Animación de pulso para texto (más fuerte, usada en el título) */
 @keyframes pulse-text-strong {
     from {
         text-shadow:
@@ -138,25 +162,29 @@ td[style*="display: none"] {
     }
 }
 
+
+/* Contenedor de Botones */
 .button-container {
     margin-top: 30px;
 }
 
-
+/* Botones */
 button {
-    background-color: var(--background-color); 
+    background-color: var(--background-color); /* Mismo color de fondo */
     color: var(--text-color);
     padding: 12px 25px;
-    border: none; 
+    border: none; /* Quitamos borde por defecto, usamos box-shadow */
     font-size: 1em;
     cursor: pointer;
     margin: 0 10px;
     transition: all 0.3s ease;
-    position: relative; 
+    position: relative; /* Para que la sombra se aplique correctamente */
 }
 
+/* Aplicar estilo neón a botones específicos si tienen la clase */
 button.neon-border {
-    border: 1px solid transparent;
+    border: 1px solid transparent; /* Necesario para que box-shadow funcione como borde */
+     /* Reutilizamos la animación y estilo de borde */
     box-shadow:
         0 0 3px var(--border-color),
         0 0 5px var(--neon-blue),
@@ -165,46 +193,57 @@ button.neon-border {
     animation: pulse-border 2s infinite alternate;
 }
 
-button:hover:not(:disabled) { 
-    background-color: var(--neon-blue-darker);
-    color: var(--background-color);
+button:hover:not(:disabled) { /* Aplicar hover solo si no está deshabilitado */
+    background-color: var(--neon-blue-darker); /* Cambio de fondo al pasar el ratón */
+    color: var(--background-color); /* Texto oscuro para contraste */
+    /* Detener la animación de pulso en hover para que el texto sea legible */
     animation-play-state: paused;
-    text-shadow: none;
+    text-shadow: none; /* Quitar sombra de texto en hover si interfiere */
 }
 
+/* Estilo para botón deshabilitado */
 button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    /* Evitar que la animación siga en estado deshabilitado */
      animation: none;
-     box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+     box-shadow: 0 0 3px rgba(255, 255, 255, 0.5); /* Sombra tenue */
+
 }
 
+
+/* --- Estilos para el Modal (Cuadro emergente) --- */
+
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Se queda fijo en la pantalla */
+    z-index: 1000; /* Por encima de todo lo demás */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.7); 
-    padding-top: 60px; 
+    overflow: auto; /* Permite scroll si el contenido es largo */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    padding-top: 60px; /* Espacio para que no pegue arriba */
 }
 
 .modal-content {
     background-color: var(--background-color);
-    margin: 5% auto;
+    margin: 5% auto; /* Centrado vertical y horizontal */
     padding: 30px;
     width: 80%;
-    max-width: 400px; 
-    position: relative;
+    max-width: 400px; /* Ancho máximo */
+    position: relative; /* Para posicionar el botón de cerrar */
+    /* Aplicamos borde neón al modal también */
     border: 1px solid transparent;
     box-shadow:
         0 0 5px var(--border-color),
         0 0 10px var(--neon-blue),
         0 0 20px var(--neon-blue),
         inset 0 0 10px var(--neon-blue);
+    /* Podríamos aplicar la animación aquí también si queremos */
+    /* animation: pulse-border 2s infinite alternate; */
+}
 
 .close-button {
     color: #aaa;
@@ -222,6 +261,7 @@ button:disabled {
     cursor: pointer;
 }
 
+/* Estilos para elementos dentro del modal */
 .modal-content h2 {
     margin-top: 0;
     text-align: center;
@@ -234,7 +274,7 @@ button:disabled {
 }
 
 .modal-content input[type="text"] {
-    width: calc(100% - 22px);
+    width: calc(100% - 22px); /* Ajusta para padding y borde */
     padding: 10px;
     margin-bottom: 20px;
     background-color: #333;
@@ -249,7 +289,7 @@ button:disabled {
 }
 
 .modal-content button {
-    display: block; 
+    display: block; /* Hace que el botón ocupe todo el ancho */
     width: 100%;
     margin-top: 10px;
 }
@@ -259,20 +299,23 @@ button:disabled {
     color: var(--neon-blue);
     margin-bottom: 15px;
     text-align: center;
-    min-height: 1.2em; 
+    min-height: 1.2em; /* Espacio para que no salte al aparecer texto */
+}
 
 .button-container {
     margin-top: 30px;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 15px; 
+    display: flex; /* Alinear elementos horizontalmente */
+    justify-content: center; /* Centrar los elementos */
+    align-items: center; /* Alinear verticalmente */
+    gap: 15px; /* Espacio entre botón principal y nuevos controles */
 }
 
+/* Contenedor para los controles de color y exportación */
 .controls-wrapper {
-    display: inline-flex; 
+    display: inline-flex; /* Alinear icono de paleta, input y botón exportar */
     align-items: center;
     padding: 5px 10px;
+    /* Aplica el borde neón también a este contenedor */
     border: 1px solid transparent;
     box-shadow:
         0 0 3px var(--border-color),
@@ -280,37 +323,39 @@ button:disabled {
         0 0 8px var(--neon-blue),
         inset 0 0 5px var(--neon-blue);
     animation: pulse-border 2s infinite alternate;
-    background-color: var(--background-color); 
-    gap: 10px; 
+    background-color: var(--background-color); /* Fondo igual al body */
+    gap: 10px; /* Espacio interno entre controles */
 }
 
+/* Etiqueta del selector de color (icono paleta) */
 .color-picker-label {
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1.2em; /* Tamaño del icono */
     color: var(--text-color);
     transition: color 0.3s ease;
-    padding: 5px; 
+    padding: 5px; /* Área de clic */
 }
 .color-picker-label:hover {
-    color: var(--neon-blue); 
+    color: var(--neon-blue); /* Cambia color al pasar el ratón */
 }
 
+/* Input de color */
 #color-picker {
-    -webkit-appearance: none; 
+    -webkit-appearance: none; /* Quitar apariencia nativa */
     -moz-appearance: none;
     appearance: none;
-    width: 30px;
+    width: 30px; /* Tamaño reducido */
     height: 30px;
     padding: 0;
     border: none;
-    background-color: transparent; 
+    background-color: transparent; /* Sin fondo por defecto */
     cursor: pointer;
-    border-radius: 50%; 
-    border: 1px solid var(--neon-blue);
+    border-radius: 50%; /* Hacerlo circular */
+    border: 1px solid var(--neon-blue); /* Borde neón */
     box-shadow: 0 0 5px var(--neon-blue);
     transition: box-shadow 0.3s ease;
 }
-
+/* Estilo para la 'caja' de color dentro del input (depende del navegador) */
 #color-picker::-webkit-color-swatch-wrapper {
     padding: 0;
     border-radius: 50%;
@@ -327,28 +372,32 @@ button:disabled {
      box-shadow: 0 0 8px var(--neon-blue), 0 0 12px var(--neon-blue);
 }
 
+/* Botón de icono (para exportar) */
 .icon-button {
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 1.2em; 
+    font-size: 1.2em; /* Tamaño del icono */
     cursor: pointer;
     padding: 5px;
     transition: color 0.3s ease, transform 0.2s ease;
+     /* Quitarle el estilo neon-border de botón general si se aplica */
      box-shadow: none;
      animation: none;
-     border: none;
+     border: none; /* Asegurar que no tenga borde base */
 }
 
 .icon-button:hover {
-    color: var(--neon-blue); 
-    transform: scale(1.1); 
+    color: var(--neon-blue); /* Cambia color al pasar el ratón */
+    transform: scale(1.1); /* Efecto ligero de zoom */
 }
 
+/* Ajustar el botón principal si es necesario */
 #add-subject-btn {
-    padding: 10px 20px;
+    /* Puede que necesites ajustar márgenes/padding si la alineación se ve mal */
+    padding: 10px 20px; /* Un poco menos de padding vertical */
 }
-
+/* Asegurar que los iconos dentro de los botones tengan espacio */
 #add-subject-btn i {
     margin-right: 8px;
 }
