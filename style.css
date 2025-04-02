@@ -62,7 +62,7 @@ th, td {
         0 0 5px var(--neon-blue), 
         0 0 8px var(--neon-blue),
         inset 0 0 5px var(--neon-blue);
-    animation: pulse-border 2s infinite alternate;
+    animation: pulse-border 1s infinite alternate;
 }
 
 th {
