@@ -401,3 +401,137 @@ button:disabled {
 #add-subject-btn i {
     margin-right: 8px;
 }
+
+/* --- ESTILOS RESPONSIVOS PARA MÓVILES --- */
+
+@media screen and (max-width: 768px) { /* Aplica estos estilos en pantallas de 768px o menos */
+
+    .container {
+        width: 98%; /* Usar casi todo el ancho */
+        padding: 10px; /* Reducir padding */
+    }
+
+    /* Ocultar encabezado de tabla original */
+    #schedule-table thead {
+        display: none;
+    }
+
+    /* Convertir tabla, cuerpo, filas y celdas a bloques */
+    #schedule-table,
+    #schedule-table tbody,
+    #schedule-table tr,
+    #schedule-table td {
+        display: block;
+        width: 100% !important; /* Forzar ancho completo */
+        box-sizing: border-box; /* Incluir padding y borde en el ancho */
+    }
+
+    /* Estilo de cada fila como una "tarjeta" */
+    #schedule-table tr {
+        margin-bottom: 20px; /* Espacio entre tarjetas de tiempo */
+        border: 1px solid var(--neon-blue); /* Borde para la tarjeta */
+        border-radius: 5px;
+        /* Quitar animación de borde de la fila si interfiere */
+        /* animation: none; */
+        /* box-shadow: none; */
+        /* El borde neon individual de las celdas se encargará */
+    }
+
+    /* Quitar bordes internos de la tabla */
+    #schedule-table td {
+        border: none;
+        border-bottom: 1px dashed rgba(0, 204, 255, 0.3); /* Línea separadora sutil */
+        text-align: left; /* Alinear texto a la izquierda */
+        padding-left: 10px;
+        padding-right: 10px;
+        min-height: auto; /* Resetear altura mínima */
+    }
+    /* Quitar borde inferior de la última celda de cada "tarjeta" */
+    #schedule-table tr td:last-child {
+        border-bottom: none;
+    }
+
+     /* Mantener borde neón en celdas individuales (opcional, puede ser mucho) */
+     /* Si prefieres borde solo en la 'tarjeta' (tr), comenta esta regla */
+    #schedule-table td.neon-border {
+        border-color: transparent; /* Mantenemos el truco del box-shadow */
+        /* Podríamos reducir el efecto neón aquí si es demasiado */
+         box-shadow:
+            0 0 2px var(--border-color),
+            0 0 3px var(--neon-blue),
+            inset 0 0 3px var(--neon-blue);
+        animation: pulse-border 2s infinite alternate; /* Mantener pulso */
+     }
+
+
+    /* Celda de Hora - darle estilo de cabecera de tarjeta */
+    #schedule-table td.time-slot {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1em;
+        background-color: rgba(0, 204, 255, 0.1);
+        border-bottom: 1px solid var(--neon-blue) !important; /* Separador fuerte */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    /* Añadir etiqueta del día antes del contenido de la celda de materia */
+    #schedule-table td.subject-cell {
+         position: relative; /* Para posicionar el ::before si fuera necesario */
+         padding-left: 15px; /* Más espacio a la izquierda */
+         padding-top: 10px;
+         padding-bottom: 10px;
+         min-height: 40px; /* Altura mínima para celdas vacías */
+         display: flex; /* Usar flex para alinear etiqueta y contenido */
+         align-items: center; /* Centrar verticalmente */
+         flex-wrap: wrap; /* Permitir que el contenido pase abajo si es largo */
+    }
+
+    #schedule-table td.subject-cell::before {
+        content: attr(data-day); /* Muestra el día desde el atributo data-day */
+        font-weight: bold;
+        color: var(--neon-blue); /* Color neón para la etiqueta */
+        min-width: 80px; /* Ancho mínimo para la etiqueta del día */
+        display: inline-block; /* Mostrar en línea */
+        margin-right: 10px; /* Espacio entre etiqueta y contenido */
+        text-shadow: none; /* Quitar sombra de texto si interfiere */
+    }
+
+     /* Celdas ocultas por rowspan deben seguir ocultas */
+     td[style*="display: none"] {
+         display: none !important;
+     }
+     /* Celdas con rowspan en móvil (el efecto visual se pierde, pero deben ocupar su espacio) */
+     .subject-cell[rowspan] {
+        /* Resetear estilos específicos de rowspan que no aplican bien en bloque */
+        vertical-align: initial;
+        padding-top: 10px; /* Restaurar padding normal */
+         /* El rowspan numérico no tendrá efecto visual con display:block */
+     }
+
+
+    /* Ajustar botones para que se apilen si no caben */
+    .button-container {
+        flex-wrap: wrap; /* Permitir que los botones pasen a la siguiente línea */
+        gap: 10px; /* Espacio cuando se apilan */
+        justify-content: space-around; /* Distribuir espacio */
+    }
+    .controls-wrapper {
+         margin-top: 10px; /* Añadir espacio si se apila debajo del botón principal */
+    }
+
+    /* Reducir tamaño de fuente general si es necesario */
+    body {
+        font-size: 15px;
+    }
+    h1.title-neon {
+        font-size: 2em; /* Reducir tamaño del título */
+    }
+    /* Ajustar tamaño de texto en modal si es necesario */
+    .modal-content {
+         width: 90%;
+         margin: 10% auto; /* Ajustar margen */
+         padding: 20px;
+    }
+
+} /* Fin de @media screen and (max-width: 768px) */
