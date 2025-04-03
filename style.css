@@ -1,13 +1,13 @@
-/* Variables de color */
+/* Estilos criminales Bellacos */
 :root {
     --background-color: #282828;
-    --neon-blue: #00ccff; /* Azul celeste neón (Color por defecto y modificable) */
-    --neon-blue-darker: #00aacc; /* Versión oscura para animación (se ajustará con JS) */
+    --neon-blue: #00ccff; 
+    --neon-blue-darker: #00aacc;
     --text-color: #ffffff;
     --border-color: #ffffff;
 }
 
-/* Estilos base */
+
 body {
     margin: 0;
     padding: 20px;
@@ -18,110 +18,110 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    flex-direction: column; /* Para centrar el contenedor */
+    flex-direction: column;
 }
 
 .container {
     text-align: center;
     width: 95%;
-    max-width: 1200px; /* Aumentar ancho máximo para acomodar reflexión */
+    max-width: 1200px;
 }
 
-/* Estilo del Título Principal */
+
 .title-neon {
     font-size: 2em;
     margin-bottom: 20px;
     text-transform: uppercase;
     text-align: left;
-    animation: pulse-text-strong 1.5s infinite alternate; /* Animación más notable para el título */
+    animation: pulse-text-strong 1.5s infinite alternate; 
 }
 
-/* Estilo base para texto con neón sutil */
+
 .neon-text {
     color: var(--text-color);
-    /* Sombra sutil para legibilidad */
+   
     text-shadow:
         0 0 2px var(--neon-blue),
         0 0 5px var(--neon-blue);
 }
 
-/* Tabla */
+
 #schedule-table {
-    width: 100%; /* Ocupa el ancho de su contenedor (.schedule-area) */
-    border-collapse: collapse; /* Une los bordes */
+    width: 100%; 
+    border-collapse: collapse; 
     margin: 1px 0;
-    table-layout: fixed; /* Asegura columnas de ancho uniforme */
+    table-layout: fixed; 
 }
 
-/* Celdas de la tabla (encabezados y datos) */
+
 th, td {
-    border: 1px solid var(--border-color); /* Borde base blanco */
-    padding: 12px 8px; /* Espaciado interno */
+    border: 1px solid var(--border-color); 
+    padding: 12px 8px;
     text-align: center;
-    min-height: 50px; /* Altura mínima para cada celda */
-    word-wrap: break-word; /* Para que el texto largo no desborde */
-    position: relative; /* Necesario para el efecto neón */
+    min-height: 50px; 
+    word-wrap: break-word; 
+    position: relative; 
 }
 
-/* Estilo Neón Pulsante para Bordes */
+
 .neon-border {
-    border-color: transparent; /* Ocultamos el borde sólido base */
-    box-shadow: /* Múltiples sombras para crear el brillo */
-        0 0 3px var(--border-color), /* Borde blanco sutil */
-        0 0 5px var(--neon-blue),    /* Resplandor neón interior */
-        0 0 8px var(--neon-blue),   /* Resplandor neón medio */
-        inset 0 0 5px var(--neon-blue); /* Resplandor interior */
-    animation: pulse-border 2s infinite alternate; /* Animación */
+    border-color: transparent;
+    box-shadow: 
+        0 0 3px var(--border-color), 
+        0 0 5px var(--neon-blue),    
+        0 0 8px var(--neon-blue),   
+        inset 0 0 5px var(--neon-blue);
+    animation: pulse-border 2s infinite alternate;
 }
 
-/* Encabezados de la tabla */
+
 th {
-    background-color: rgba(0, 204, 255, 0.1); /* Fondo ligeramente azulado (se ajustará con el color neón?) */
+    background-color: rgba(0, 204, 255, 0.1); 
     font-weight: bold;
 }
 
-/* Celda de la hora */
+
 .time-slot, .time-header {
-    min-width: 80px; /* Ancho mínimo para la columna de hora */
+    min-width: 80px; 
     font-weight: bold;
     font-size: 0.9em;
 }
 
-/* Celdas de materia */
+
 .subject-cell {
-    cursor: pointer; /* Indica que se puede hacer clic */
-    transition: background-color 0.3s ease; /* Transición suave */
-    color: var(--text-color); /* Asegura texto blanco */
-    text-shadow: /* Aplicamos el neon text sutil */
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    color: var(--text-color); 
+    text-shadow: 
         0 0 2px var(--neon-blue),
         0 0 5px var(--neon-blue);
 }
 
 .subject-cell:hover {
-    background-color: rgba(0, 204, 255, 0.1); /* Usar variable de color aquí? O dejar azul? */
-    /* Considerar: background-color: color-mix(in srgb, var(--neon-blue) 10%, transparent); */
+    background-color: rgba(0, 204, 255, 0.1); 
+
 }
 
-/* Estilo para celdas de materia seleccionadas */
+
 .subject-cell.selected {
-    background-color: color-mix(in srgb, var(--neon-blue) 30%, transparent) !important; /* Fondo más resaltado (importante para sobreescribir hover)*/
-    outline: 2px solid var(--neon-blue); /* Un borde exterior para mayor claridad */
-    outline-offset: -2px; /* Ajusta el borde para que esté dentro */
+    background-color: color-mix(in srgb, var(--neon-blue) 30%, transparent) !important; 
+    outline: 2px solid var(--neon-blue); 
+    outline-offset: -2px; 
 }
 
-/* Ocultar visualmente celdas que están cubiertas por rowspan */
+
 td[style*="display: none"] {
-  /* El JS ya se encarga de poner display: none */
+
 }
 
-/* Asegurar que las celdas con rowspan mantengan el estilo y alineación */
+
 .subject-cell[rowspan] {
-    vertical-align: top; /* Alinear texto arriba en celdas fusionadas */
-    padding-top: 15px; /* Más padding superior para centrar visualmente */
+    vertical-align: top; 
+    padding-top: 15px;
 }
 
 
-/* Animación de pulso para bordes */
+
 @keyframes pulse-border {
     from {
         box-shadow:
@@ -133,13 +133,13 @@ td[style*="display: none"] {
     to {
         box-shadow:
             0 0 5px var(--border-color),
-            0 0 10px var(--neon-blue-darker), /* Usa la versión oscura */
+            0 0 10px var(--neon-blue-darker),
             0 0 15px var(--neon-blue-darker),
             inset 0 0 8px var(--neon-blue-darker);
     }
 }
 
-/* Animación de pulso para texto (más fuerte, usada en el título) */
+
 @keyframes pulse-text-strong {
     from {
         text-shadow:
@@ -151,74 +151,42 @@ td[style*="display: none"] {
     to {
         text-shadow:
             0 0 10px var(--text-color),
-            0 0 20px var(--neon-blue-darker), /* Usa la versión oscura */
+            0 0 20px var(--neon-blue-darker),
             0 0 30px var(--neon-blue-darker),
             0 0 40px var(--neon-blue-darker);
     }
 }
 
 
-/* Contenedor de Botones */
+
 .button-container {
     margin-top: 30px;
-    display: flex; /* Alinear elementos horizontalmente */
-    justify-content: center; /* Centrar los elementos */
-    align-items: center; /* Alinear verticalmente */
-    gap: 15px; /* Espacio entre botón principal y nuevos controles */
-    flex-wrap: wrap; /* Permitir que los controles bajen si no caben */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    gap: 15px; 
+    flex-wrap: wrap; 
 }
 
-/* Botones */
+
 button {
-    background-color: var(--background-color); /* Mismo color de fondo */
+    background-color: var(--background-color); 
     color: var(--text-color);
-    padding: 10px 20px; /* Ajustado */
-    border: none; /* Quitamos borde por defecto, usamos box-shadow */
+    padding: 10px 20px;
+    border: none;
     font-size: 1em;
     cursor: pointer;
-    /* margin: 0 10px; Quitar margen, usar gap en el contenedor */
+   
     transition: all 0.3s ease;
-    position: relative; /* Para que la sombra se aplique correctamente */
+    position: relative;
 }
-/* Icono dentro del botón */
+
 #add-subject-btn i {
     margin-right: 8px;
 }
 
-/* Aplicar estilo neón a botones específicos si tienen la clase */
+
 button.neon-border {
-    border: 1px solid transparent; /* Necesario para que box-shadow funcione como borde */
-    box-shadow:
-        0 0 3px var(--border-color),
-        0 0 5px var(--neon-blue),
-        0 0 8px var(--neon-blue),
-        inset 0 0 5px var(--neon-blue);
-    animation: pulse-border 2s infinite alternate;
-}
-
-button:hover:not(:disabled) { /* Aplicar hover solo si no está deshabilitado */
-    background-color: var(--neon-blue-darker); /* Cambio de fondo al pasar el ratón */
-    color: var(--background-color); /* Texto oscuro para contraste */
-    animation-play-state: paused;
-    text-shadow: none;
-}
-
-/* Estilo para botón deshabilitado */
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-     animation: none;
-     box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
-}
-
-/* --- Estilos para los nuevos controles --- */
-
-/* Contenedor para los controles de color y exportación */
-.controls-wrapper {
-    display: inline-flex; /* Alinear icono de paleta, input y botón exportar */
-    align-items: center;
-    padding: 5px 10px;
-    /* Aplica el borde neón también a este contenedor */
     border: 1px solid transparent;
     box-shadow:
         0 0 3px var(--border-color),
@@ -226,39 +194,71 @@ button:disabled {
         0 0 8px var(--neon-blue),
         inset 0 0 5px var(--neon-blue);
     animation: pulse-border 2s infinite alternate;
-    background-color: var(--background-color); /* Fondo igual al body */
-    gap: 10px; /* Espacio interno entre controles */
 }
 
-/* Etiqueta del selector de color (icono paleta) */
+button:hover:not(:disabled) {
+    background-color: var(--neon-blue-darker);
+    color: var(--background-color); 
+    animation-play-state: paused;
+    text-shadow: none;
+}
+
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+     animation: none;
+     box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+.controls-wrapper {
+    display: inline-flex; 
+    align-items: center;
+    padding: 5px 10px;
+    
+    border: 1px solid transparent;
+    box-shadow:
+        0 0 3px var(--border-color),
+        0 0 5px var(--neon-blue),
+        0 0 8px var(--neon-blue),
+        inset 0 0 5px var(--neon-blue);
+    animation: pulse-border 2s infinite alternate;
+    background-color: var(--background-color);
+    gap: 10px; 
+}
+
+
 .color-picker-label {
     cursor: pointer;
-    font-size: 1.2em; /* Tamaño del icono */
+    font-size: 1.2em; 
     color: var(--text-color);
     transition: color 0.3s ease;
-    padding: 5px; /* Área de clic */
+    padding: 5px;
 }
 .color-picker-label:hover {
-    color: var(--neon-blue); /* Cambia color al pasar el ratón */
+    color: var(--neon-blue);
 }
 
-/* Input de color */
+
 #color-picker {
-    -webkit-appearance: none; /* Quitar apariencia nativa */
+    -webkit-appearance: none; 
     -moz-appearance: none;
     appearance: none;
-    width: 30px; /* Tamaño reducido */
+    width: 30px; 
     height: 30px;
     padding: 0;
     border: none;
-    background-color: transparent; /* Sin fondo por defecto */
+    background-color: transparent; 
     cursor: pointer;
-    border-radius: 50%; /* Hacerlo circular */
-    border: 1px solid var(--neon-blue); /* Borde neón */
+    border-radius: 50%;
+    border: 1px solid var(--neon-blue);
     box-shadow: 0 0 5px var(--neon-blue);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Añadir transición de borde */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; 
 }
-/* Estilo para la 'caja' de color dentro del input (depende del navegador) */
+
 #color-picker::-webkit-color-swatch-wrapper { padding: 0; border-radius: 50%; }
 #color-picker::-webkit-color-swatch { border: none; border-radius: 50%; }
 #color-picker::-moz-color-swatch { border: none; border-radius: 50%; }
@@ -266,73 +266,71 @@ button:disabled {
      box-shadow: 0 0 8px var(--neon-blue), 0 0 12px var(--neon-blue);
 }
 
-/* Botón de icono (para exportar) */
+
 .icon-button {
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 1.2em; /* Tamaño del icono */
+    font-size: 1.2em;
     cursor: pointer;
     padding: 5px;
     transition: color 0.3s ease, transform 0.2s ease;
-     /* Quitarle el estilo neon-border de botón general */
+     
      box-shadow: none;
      animation: none;
-     border: none; /* Asegurar que no tenga borde base */
+     border: none;
 }
 
 .icon-button:hover {
-    color: var(--neon-blue); /* Cambia color al pasar el ratón */
-    transform: scale(1.1); /* Efecto ligero de zoom */
+    color: var(--neon-blue); 
+    transform: scale(1.1);
 }
 
 
-/* --- Estilos para el Layout Principal (Tabla + Reflexión) --- */
+
 
 .main-layout {
-    display: flex;          /* Activa Flexbox */
-    justify-content: space-between; /* Espacio entre las áreas */
-    align-items: flex-start; /* Alinea los elementos arriba */
-    gap: 30px;             /* Espacio entre la tabla y la reflexión */
-    width: 100%;           /* Ocupa el ancho del contenedor padre */
-    margin-top: 20px;      /* Espacio después del título H1 */
-    flex-wrap: wrap;       /* Permite que la reflexión pase abajo en pantallas pequeñas */
+    display: flex;        
+    justify-content: space-between; 
+    align-items: flex-start;
+    gap: 30px;           
+    width: 100%;          
+    margin-top: 20px;     
+    flex-wrap: wrap;       
 }
 
 .schedule-area {
-    flex: 3; /* Que el área del horario ocupe más espacio (aprox 70-75%) */
-    min-width: 550px; /* Ancho mínimo antes de que envuelva (ajustar según necesidad) */
-    /* Centrar tabla y botones dentro de esta área */
+    flex: 3; 
+    min-width: 550px; 
+    
      display: flex;
      flex-direction: column;
      align-items: center;
 }
 
 .reflection-area {
-    flex: 1; /* Que el área de reflexión ocupe el espacio restante (aprox 25-30%) */
-    min-width: 250px; /* Ancho mínimo */
+    flex: 1; 
+    min-width: 250px;
     padding: 15px;
-    border-left: 1px dashed var(--neon-blue); /* Línea divisoria sutil */
-    text-align: left; /* Alineación izquierda para párrafos */
-    transition: border-color 0.3s ease; /* Transición para el borde */
+    border-left: 1px dashed var(--neon-blue);
+    text-align: left; 
+    transition: border-color 0.3s ease;
 }
 
 .reflection-area p {
-    margin-bottom: 1em; /* Espacio entre párrafos */
-    line-height: 1.5; /* Altura de línea para mejor legibilidad */
-    font-size: 0.8em; /* Tamaño de fuente ligeramente más pequeño */
-    /* Hereda el text-shadow de .neon-text */
-    /* Ejemplo de sombra más sutil (opcional): */
-    /* text-shadow: 0 0 3px var(--neon-blue); */
+    margin-bottom: 1em;
+    line-height: 1.5; 
+    font-size: 0.8em;
+
 }
 
-/* Ajustar el contenedor principal de botones */
+
 .schedule-area .button-container {
-     width: 100%; /* Asegurar que ocupe el ancho del schedule-area */
-     margin-top: 20px; /* Mantener espacio después de la tabla */
+     width: 100%; 
+     margin-top: 20px; 
 }
 
-/* --- Estilos para el Modal (sin cambios relevantes) --- */
+
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.7); padding-top: 60px; }
 .modal-content { background-color: var(--background-color); margin: 5% auto; padding: 30px; width: 80%; max-width: 400px; position: relative; border: 1px solid transparent; box-shadow: 0 0 5px var(--border-color), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), inset 0 0 10px var(--neon-blue); }
 .close-button { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; }
@@ -345,24 +343,23 @@ button:disabled {
 #selected-cell-info { font-style: italic; color: var(--neon-blue); margin-bottom: 15px; text-align: center; min-height: 1.2em; transition: color 0.3s ease; }
 
 
-/* Media Query para pantallas más pequeñas */
-@media (max-width: 950px) { /* Ajustar punto de quiebre si es necesario */
+@media (max-width: 950px) { /
     .main-layout {
-        flex-direction: column; /* Apilar verticalmente */
-        align-items: center;    /* Centrar los elementos */
+        flex-direction: column;
+        align-items: center;   
     }
     .schedule-area {
-        min-width: 90%; /* Permitir que ocupe casi todo el ancho */
-        order: 1; /* Mostrar horario primero */
-        flex-basis: auto; /* Resetear flex-basis */
+        min-width: 90%; 
+        order: 1;
+        flex-basis: auto;
     }
     .reflection-area {
-        min-width: 90%; /* Permitir que ocupe casi todo el ancho */
-        border-left: none; /* Quitar borde izquierdo */
-        border-top: 1px dashed var(--neon-blue); /* Poner borde arriba */
-        margin-top: 30px; /* Espacio entre horario y reflexión */
+        min-width: 90%; 
+        border-left: none;
+        border-top: 1px dashed var(--neon-blue); 
+        margin-top: 30px;
         padding-top: 30px;
-        order: 2; /* Mostrar reflexión después */
-         flex-basis: auto; /* Resetear flex-basis */
+        order: 2;
+         flex-basis: auto; 
     }
 }
