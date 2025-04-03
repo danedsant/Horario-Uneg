@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     alert("Pulsa la tecla Ctrl mientras eliges las celdas para unir bloques del horario según lo necesites.");
 
-    // --- Referencias a Elementos del DOM ---
     const modal = document.getElementById('add-subject-modal');
     const closeModalButton = modal.querySelector('.close-button');
     const subjectCells = document.querySelectorAll('.subject-cell');
@@ -10,14 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmButton = document.getElementById('confirm-add-subject');
     const tableBody = document.querySelector('#schedule-table tbody');
     const addSubjectButton = document.getElementById('add-subject-btn');
-    const containerToExport = document.getElementById('schedule-container'); // Contenedor a exportar
-    const colorPicker = document.getElementById('color-picker'); // Selector de color
-    const exportButton = document.getElementById('export-png-btn'); // Botón exportar
+    const containerToExport = document.getElementById('schedule-container'); 
+    const colorPicker = document.getElementById('color-picker'); 
+    const exportButton = document.getElementById('export-png-btn'); 
 
     let selectedCells = new Set();
     let isModalOpen = false;
 
-    // --- Funciones del Modal (sin cambios) ---
     function openModal() {
         if (selectedCells.size === 0 || isModalOpen) {
             return;
@@ -48,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isModalOpen = false;
     }
 
-     // --- Lógica de Selección (sin cambios) ---
     function handleCellClick(event) {
         const clickedCell = event.target;
         if (!clickedCell.classList.contains('subject-cell') || isModalOpen) return;
@@ -98,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
          }
      }
 
-    // --- Lógica de Guardado y Rowspan (sin cambios) ---
      function getEffectiveText(cell) {
-        // ... (función getEffectiveText sin cambios) ...
+    
          if (cell.style.display === 'none') {
              let row = cell.parentElement.rowIndex;
              let col = cell.cellIndex;
@@ -123,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
      }
 
     function applySubjectAndRowspan() {
-        // ... (función applySubjectAndRowspan sin cambios) ...
+    
         if (selectedCells.size === 0) return;
         const newSubject = subjectInput.value.trim();
         const affectedColumns = new Set();
@@ -137,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
                  let startRowIndex = cell.parentElement.rowIndex;
                  let colIndex = cell.cellIndex;
                  for (let i = 1; i < rowSpan; i++) {
-                     // Corregir índice de fila para tbody.rows
                      let tableRowIndex = startRowIndex - (tableBody.parentElement.tHead ? tableBody.parentElement.tHead.rows.length : 0);
                      let nextRow = tableBody.rows[tableRowIndex + i];
                      if (nextRow && nextRow.cells[colIndex]) {
@@ -149,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let row = cell.parentElement.rowIndex;
                 let col = cell.cellIndex;
                 for (let i = row - 1; i >= 0; i--) {
-                    // Usar índice relativo al tbody
+                
                     let tableRowIndex = i - (tableBody.parentElement.tHead ? tableBody.parentElement.tHead.rows.length : 0);
                      if (tableRowIndex < tableBody.rows.length && tableRowIndex >= 0) {
                         let potentialParentCell = tableBody.rows[tableRowIndex].cells[col];
@@ -177,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!cellsByColumn.has(colIndex)) {
                     cellsByColumn.set(colIndex, []);
                 }
-                // Usar índice relativo al tbody para ordenar
+                
                  let cellData = { element: cell, rowIndex: cell.parentElement.rowIndex };
                 cellsByColumn.get(colIndex).push(cellData);
              }
@@ -188,14 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         cellsByColumn.forEach(sortedCellsInColData => {
-            let sortedCellsInCol = sortedCellsInColData.map(data => data.element); // Extraer solo los elementos
+            let sortedCellsInCol = sortedCellsInColData.map(data => data.element); 
              let startIndex = 0;
              while (startIndex < sortedCellsInCol.length) {
                 let currentCell = sortedCellsInCol[startIndex];
                 let blockEndIndex = startIndex;
 
                 for (let j = startIndex + 1; j < sortedCellsInCol.length; j++) {
-                     // Usar rowIndex del elemento TR padre para comparar
+                     
                     if (sortedCellsInCol[j].parentElement.rowIndex === sortedCellsInCol[j - 1].parentElement.rowIndex + 1) {
                         blockEndIndex = j;
                     } else {
@@ -225,66 +220,54 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
     }
 
-    // --- NUEVA LÓGICA ---
+    
 
-    // 1. Cambiar Color Neón
     colorPicker.addEventListener('input', (event) => {
         const newColor = event.target.value;
-        // Actualizar las variables CSS en el elemento raíz (<html>)
         document.documentElement.style.setProperty('--neon-blue', newColor);
-        // Actualizar la versión más oscura también (simple enfoque: usar el mismo color)
-        // Para un efecto de pulso más notorio, necesitarías calcular un color más oscuro.
         document.documentElement.style.setProperty('--neon-blue-darker', newColor);
-
-        // Actualizar borde del propio color picker
          event.target.style.borderColor = newColor;
          event.target.style.boxShadow = `0 0 5px ${newColor}`;
     });
-     // Inicializar borde del color picker con el valor actual
+
      colorPicker.style.borderColor = colorPicker.value;
      colorPicker.style.boxShadow = `0 0 5px ${colorPicker.value}`;
 
-    // 2. Exportar a PNG
-    exportButton.addEventListener('click', () => {
-        // Deseleccionar temporalmente las celdas para que no salgan resaltadas en la imagen
-        const currentSelection = new Set(selectedCells); // Guardar selección actual
-        clearSelection(); // Limpiar visualmente
 
-        // Ocultar botones/controles que no queremos en la imagen
+    exportButton.addEventListener('click', () => {
+       
+        const currentSelection = new Set(selectedCells); 
+        clearSelection();
         const buttonContainer = document.querySelector('.button-container');
         buttonContainer.style.display = 'none';
 
-
-        // Usar html2canvas
         html2canvas(containerToExport, {
-             backgroundColor: getComputedStyle(document.body).backgroundColor || '#282828', // Usar fondo del body
-             scale: 2, // Aumentar escala para mejor resolución
-             logging: false, // Desactivar logs en consola
-             useCORS: true, // Necesario si hubiera imágenes externas o fuentes web complejas
-             // Eliminar elementos específicos de la captura si es necesario
-             // ignoreElements: (element) => element.id === 'element-to-ignore'
+             backgroundColor: getComputedStyle(document.body).backgroundColor || '#282828', 
+             scale: 2,
+             logging: false, 
+             useCORS: true,
+           
         }).then(canvas => {
-            // Crear un enlace temporal para descargar la imagen
+           
             const link = document.createElement('a');
-            link.download = 'horario.png'; // Nombre del archivo
-            link.href = canvas.toDataURL('image/png'); // Convertir canvas a Data URL PNG
-            link.click(); // Simular clic para iniciar descarga
+            link.download = 'Horario.png'; 
+            link.href = canvas.toDataURL('image/png');
+            link.click();
 
-             // Restaurar visibilidad de botones/controles
+             
              buttonContainer.style.display = '';
-
-             // Restaurar la selección visual si había una antes de exportar
+            
              currentSelection.forEach(cell => {
                  cell.classList.add('selected');
-                 selectedCells.add(cell); // Re-añadir al set lógico
+                 selectedCells.add(cell);
              });
-              updateAddButtonState(); // Actualizar estado del botón por si acaso
+              updateAddButtonState(); 
 
 
         }).catch(err => {
-             console.error("Error al exportar con html2canvas:", err);
+             console.error("Error al exportar:", err);
              alert("Hubo un error al intentar exportar la imagen.");
-              // Asegurarse de restaurar la visibilidad incluso si hay error
+        
               buttonContainer.style.display = '';
               currentSelection.forEach(cell => {
                  cell.classList.add('selected');
@@ -294,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Añadir Event Listeners Generales ---
     tableBody.addEventListener('click', handleCellClick);
     closeModalButton.addEventListener('click', closeModal);
     window.addEventListener('click', (event) => {
@@ -311,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     addSubjectButton.addEventListener('click', openModal);
 
-    // Inicializar estado del botón Añadir Materia
     updateAddButtonState();
 
-}); // Fin del addEventListener('DOMContentLoaded')
+}); // 
