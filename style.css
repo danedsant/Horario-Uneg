@@ -1,8 +1,8 @@
 /* Estilos criminales Bellacos */
 :root {
     --background-color: #282828;
-    --neon-blue: #00ccff; 
-    --neon-blue-darker: #00aacc;
+    --neon-blue: #00ccff;
+    --neon-blue-darker: #00aacc; /* Se ajusta con JS ahora */
     --text-color: #ffffff;
     --border-color: #ffffff;
 }
@@ -29,17 +29,16 @@ body {
 
 
 .title-neon {
-    font-size: 2em;
+    font-size: 2em; /* Ajustado en la versión anterior */
     margin-bottom: 20px;
     text-transform: uppercase;
-    text-align: left;
-    animation: pulse-text-strong 1.5s infinite alternate; 
+    text-align: left; /* Ajustado en la versión anterior */
+    animation: pulse-text-strong 1.5s infinite alternate;
 }
 
 
 .neon-text {
     color: var(--text-color);
-   
     text-shadow:
         0 0 2px var(--neon-blue),
         0 0 5px var(--neon-blue);
@@ -47,81 +46,84 @@ body {
 
 
 #schedule-table {
-    width: 100%; 
-    border-collapse: collapse; 
-    margin: 1px 0;
-    table-layout: fixed; 
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1px 0; /* Ajustado en la versión anterior */
+    table-layout: fixed;
 }
 
 
 th, td {
-    border: 1px solid var(--border-color); 
+    border: 1px solid var(--border-color);
     padding: 12px 8px;
     text-align: center;
-    min-height: 50px; 
-    word-wrap: break-word; 
-    position: relative; 
+    min-height: 50px;
+    word-wrap: break-word;
+    position: relative;
 }
 
 
 .neon-border {
     border-color: transparent;
-    box-shadow: 
-        0 0 3px var(--border-color), 
-        0 0 5px var(--neon-blue),    
-        0 0 8px var(--neon-blue),   
+    box-shadow:
+        0 0 3px var(--border-color),
+        0 0 5px var(--neon-blue),
+        0 0 8px var(--neon-blue),
         inset 0 0 5px var(--neon-blue);
-    animation: pulse-border 2s infinite alternate;
+    animation: pulse-border 2s infinite alternate; /* Animación activa por defecto */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Añadir transición para cambios de color */
 }
 
 
 th {
-    background-color: rgba(0, 204, 255, 0.1); 
+    /* Considerar ajustar este color con JS también si se quiere que cambie con el neón */
+    background-color: rgba(0, 204, 255, 0.1);
     font-weight: bold;
 }
 
 
 .time-slot, .time-header {
-    min-width: 80px; 
+    min-width: 80px;
     font-weight: bold;
     font-size: 0.9em;
 }
 
 
 .subject-cell {
-    cursor: pointer; 
-    transition: background-color 0.3s ease;
-    color: var(--text-color); 
-    text-shadow: 
+    cursor: pointer;
+    transition: background-color 0.3s ease, outline 0.3s ease; /* Añadir transición outline */
+    color: var(--text-color);
+    text-shadow:
         0 0 2px var(--neon-blue),
         0 0 5px var(--neon-blue);
 }
 
 .subject-cell:hover {
-    background-color: rgba(0, 204, 255, 0.1); 
-
+     /* Usar el color neón actual para el hover */
+    background-color: color-mix(in srgb, var(--neon-blue) 10%, transparent);
 }
 
 
 .subject-cell.selected {
-    background-color: color-mix(in srgb, var(--neon-blue) 30%, transparent) !important; 
-    outline: 2px solid var(--neon-blue); 
-    outline-offset: -2px; 
+    background-color: color-mix(in srgb, var(--neon-blue) 30%, transparent) !important;
+    outline: 2px solid var(--neon-blue);
+    outline-offset: -2px;
+    transition: background-color 0.3s ease, outline-color 0.3s ease; /* Transición también para outline */
 }
 
 
 td[style*="display: none"] {
-
+    /* Estilos para celdas ocultas (si se desean) */
 }
 
 
 .subject-cell[rowspan] {
-    vertical-align: top; 
+    vertical-align: top;
     padding-top: 15px;
 }
 
 
-
+/* Animaciones (sin cambios en definición) */
 @keyframes pulse-border {
     from {
         box-shadow:
@@ -138,7 +140,6 @@ td[style*="display: none"] {
             inset 0 0 8px var(--neon-blue-darker);
     }
 }
-
 
 @keyframes pulse-text-strong {
     from {
@@ -158,25 +159,23 @@ td[style*="display: none"] {
 }
 
 
-
+/* Contenedores y Botones */
 .button-container {
     margin-top: 30px;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 15px; 
-    flex-wrap: wrap; 
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-
 button {
-    background-color: var(--background-color); 
+    background-color: var(--background-color);
     color: var(--text-color);
     padding: 10px 20px;
     border: none;
     font-size: 1em;
     cursor: pointer;
-   
     transition: all 0.3s ease;
     position: relative;
 }
@@ -193,12 +192,12 @@ button.neon-border {
         0 0 5px var(--neon-blue),
         0 0 8px var(--neon-blue),
         inset 0 0 5px var(--neon-blue);
-    animation: pulse-border 2s infinite alternate;
+    animation: pulse-border 2s infinite alternate; /* Animación activa por defecto */
 }
 
 button:hover:not(:disabled) {
     background-color: var(--neon-blue-darker);
-    color: var(--background-color); 
+    color: var(--background-color);
     animation-play-state: paused;
     text-shadow: none;
 }
@@ -207,33 +206,31 @@ button:hover:not(:disabled) {
 button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-     animation: none;
+     animation: none; /* Asegurar que no anime si está deshabilitado */
      box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 
-
-
+/* Controles (Color Picker, Export) */
 .controls-wrapper {
-    display: inline-flex; 
+    display: inline-flex;
     align-items: center;
     padding: 5px 10px;
-    
     border: 1px solid transparent;
-    box-shadow:
+    box-shadow: /* Sombra base */
         0 0 3px var(--border-color),
         0 0 5px var(--neon-blue),
         0 0 8px var(--neon-blue),
         inset 0 0 5px var(--neon-blue);
-    animation: pulse-border 2s infinite alternate;
+    animation: pulse-border 2s infinite alternate; /* Animación activa por defecto */
     background-color: var(--background-color);
-    gap: 10px; 
+    gap: 10px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Transición */
 }
-
 
 .color-picker-label {
     cursor: pointer;
-    font-size: 1.2em; 
+    font-size: 1.2em;
     color: var(--text-color);
     transition: color 0.3s ease;
     padding: 5px;
@@ -242,30 +239,27 @@ button:disabled {
     color: var(--neon-blue);
 }
 
-
 #color-picker {
-    -webkit-appearance: none; 
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 30px; 
+    width: 30px;
     height: 30px;
     padding: 0;
     border: none;
-    background-color: transparent; 
+    background-color: transparent;
     cursor: pointer;
     border-radius: 50%;
-    border: 1px solid var(--neon-blue);
-    box-shadow: 0 0 5px var(--neon-blue);
-    transition: box-shadow 0.3s ease, border-color 0.3s ease; 
+    border: 1px solid var(--neon-blue); /* Borde dinámico */
+    box-shadow: 0 0 5px var(--neon-blue); /* Sombra dinámica */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
 #color-picker::-webkit-color-swatch-wrapper { padding: 0; border-radius: 50%; }
 #color-picker::-webkit-color-swatch { border: none; border-radius: 50%; }
 #color-picker::-moz-color-swatch { border: none; border-radius: 50%; }
 #color-picker:hover {
      box-shadow: 0 0 8px var(--neon-blue), 0 0 12px var(--neon-blue);
 }
-
 
 .icon-button {
     background: none;
@@ -275,91 +269,129 @@ button:disabled {
     cursor: pointer;
     padding: 5px;
     transition: color 0.3s ease, transform 0.2s ease;
-     
+     /* Sin borde neón por defecto */
      box-shadow: none;
      animation: none;
-     border: none;
 }
-
 .icon-button:hover {
-    color: var(--neon-blue); 
+    color: var(--neon-blue);
     transform: scale(1.1);
 }
 
 
-
-
+/* Layout Principal (Tabla + Reflexión) */
 .main-layout {
-    display: flex;        
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 30px;           
-    width: 100%;          
-    margin-top: 20px;     
-    flex-wrap: wrap;       
+    gap: 30px;
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .schedule-area {
-    flex: 3; 
-    min-width: 550px; 
-    
-     display: flex;
-     flex-direction: column;
-     align-items: center;
+    flex: 3;
+    min-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .reflection-area {
-    flex: 1; 
+    flex: 1;
     min-width: 250px;
     padding: 15px;
-    border-left: 1px dashed var(--neon-blue);
-    text-align: left; 
-    transition: border-color 0.3s ease;
+    border-left: 1px dashed var(--neon-blue); /* Borde dinámico */
+    text-align: left;
+    transition: border-color 0.3s ease; /* Transición para borde */
 }
 
 .reflection-area p {
     margin-bottom: 1em;
-    line-height: 1.5; 
-    font-size: 0.8em;
-
+    line-height: 1.5; /* Ajustado en versión anterior */
+    font-size: 0.8em; /* Ajustado en versión anterior */
+    /* Hereda text-shadow de .neon-text */
 }
-
 
 .schedule-area .button-container {
-     width: 100%; 
-     margin-top: 20px; 
+     width: 100%;
+     margin-top: 20px;
 }
 
 
+/* Modal (Sin cambios relevantes) */
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.7); padding-top: 60px; }
-.modal-content { background-color: var(--background-color); margin: 5% auto; padding: 30px; width: 80%; max-width: 400px; position: relative; border: 1px solid transparent; box-shadow: 0 0 5px var(--border-color), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), inset 0 0 10px var(--neon-blue); }
+.modal-content { background-color: var(--background-color); margin: 5% auto; padding: 30px; width: 80%; max-width: 400px; position: relative; border: 1px solid transparent; box-shadow: 0 0 5px var(--border-color), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), inset 0 0 10px var(--neon-blue); transition: box-shadow 0.3s ease; } /* Transición modal */
 .close-button { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; }
 .close-button:hover, .close-button:focus { color: var(--text-color); text-decoration: none; cursor: pointer; }
 .modal-content h2 { margin-top: 0; text-align: center; }
 .modal-content label { display: block; margin-top: 15px; margin-bottom: 5px; }
 .modal-content input[type="text"] { width: calc(100% - 22px); padding: 10px; margin-bottom: 20px; background-color: #333; border: 1px solid var(--neon-blue); color: var(--text-color); font-size: 1em; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
 .modal-content input[type="text"]:focus { outline: none; box-shadow: 0 0 5px var(--neon-blue); }
-.modal-content button { display: block; width: 100%; margin-top: 10px; }
+.modal-content button { display: block; width: 100%; margin-top: 10px; } /* Hereda estilo de botón general */
 #selected-cell-info { font-style: italic; color: var(--neon-blue); margin-bottom: 15px; text-align: center; min-height: 1.2em; transition: color 0.3s ease; }
 
 
-@media (max-width: 950px) { /
+/* Media Query para Layout en pantallas pequeñas */
+@media (max-width: 950px) {
     .main-layout {
         flex-direction: column;
-        align-items: center;   
+        align-items: center;
     }
     .schedule-area {
-        min-width: 90%; 
+        min-width: 90%;
         order: 1;
         flex-basis: auto;
     }
     .reflection-area {
-        min-width: 90%; 
+        min-width: 90%;
         border-left: none;
-        border-top: 1px dashed var(--neon-blue); 
+        border-top: 1px dashed var(--neon-blue); /* Borde dinámico */
         margin-top: 30px;
         padding-top: 30px;
         order: 2;
-         flex-basis: auto; 
+         flex-basis: auto;
     }
 }
+
+/* === BLOQUE PARA OPTIMIZACIÓN DE ANIMACIÓN EN MÓVILES === */
+@media (max-width: 768px) { /* Aplicar si el ancho es 768px o menos */
+
+    .neon-border {
+        /* Desactivar la animación de pulso costosa */
+        animation: none;
+    }
+
+    /* Desactivar también la animación del título en móviles */
+    .title-neon {
+         animation: none;
+         /* Aplicar una sombra de texto estática fuerte si se desactiva la animación */
+         text-shadow:
+            0 0 5px var(--text-color),
+            0 0 10px var(--neon-blue),
+            0 0 15px var(--neon-blue),
+            0 0 20px var(--neon-blue);
+    }
+
+    /* Ajustar tamaños de fuente generales para móvil */
+    body {
+        font-size: 90%; /* Reducir tamaño base */
+        padding: 10px; /* Menos padding en body */
+    }
+    .title-neon {
+        font-size: 1.8em; /* Título un poco más pequeño */
+    }
+    .reflection-area p {
+         font-size: 0.9em; /* Ajustar tamaño de reflexión */
+         line-height: 1.5;
+    }
+     .container {
+         width: 100%; /* Ocupar todo el ancho disponible */
+     }
+     .main-layout {
+         gap: 15px; /* Menos espacio entre columnas (cuando están apiladas) */
+     }
+      /* No es necesario redefinir min-width aquí si ya lo hace el @media (max-width: 950px) */
+
+} /* Fin de la Media Query de Optimización */
