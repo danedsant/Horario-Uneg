@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    alert("Pulsa la tecla Ctrl mientras eliges las celdas para unir bloques del horario según lo necesites.");
 
     // --- Referencias a Elementos del DOM ---
     const modal = document.getElementById('add-subject-modal');

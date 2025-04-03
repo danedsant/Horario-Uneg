@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horario Maker by Danedsant</title>
+    <title>Generador de Horario</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="style.css">
@@ -11,112 +11,130 @@
 <body>
     <div class="container" id="schedule-container"> <h1 class="neon-text title-neon">HORARIO</h1>
 
-        <table id="schedule-table">
-           <thead>
-                <tr>
-                    <th class="neon-border time-header">Hora</th>
-                    <th class="neon-border">Lunes</th>
-                    <th class="neon-border">Martes</th>
-                    <th class="neon-border">Miércoles</th>
-                    <th class="neon-border">Jueves</th>
-                    <th class="neon-border">Viernes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="neon-border time-slot" data-time="1">07:50 A 8:40</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="1"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="1"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="1"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="1"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="1"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="2">8:45 A 9:35</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="2"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="2"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="2"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="2"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="2"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="3">9:35 A 10:25</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="3"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="3"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="3"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="3"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="3"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="4">10:30 A 11:20</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="4"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="4"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="4"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="4"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="4"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="5">11:20 A 12:10</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="5"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="5"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="5"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="5"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="5"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="6">12:15 A 1:10</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="6"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="6"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="6"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="6"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="6"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="7">1:10 A 2:00</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="7"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="7"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="7"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="7"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="7"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="8">2:00 A 2:50</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="8"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="8"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="8"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="8"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="8"></td>
-                </tr>
-                <tr>
-                    <td class="neon-border time-slot" data-time="9">2:55 A 3:45</td>
-                    <td class="neon-border subject-cell" data-day="Lunes" data-time="9"></td>
-                    <td class="neon-border subject-cell" data-day="Martes" data-time="9"></td>
-                    <td class="neon-border subject-cell" data-day="Miércoles" data-time="9"></td>
-                    <td class="neon-border subject-cell" data-day="Jueves" data-time="9"></td>
-                    <td class="neon-border subject-cell" data-day="Viernes" data-time="9"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="main-layout">
 
-        <div class="button-container">
-             <button id="add-subject-btn" class="neon-border neon-text">
-                 <i class="fa-solid fa-plus"></i> Añadir Materia
-            </button>
+            <div class="schedule-area">
+                <table id="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="neon-border time-header">Hora</th>
+                            <th class="neon-border">Lunes</th>
+                            <th class="neon-border">Martes</th>
+                            <th class="neon-border">Miércoles</th>
+                            <th class="neon-border">Jueves</th>
+                            <th class="neon-border">Viernes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="1">07:50 A 8:40</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="1"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="1"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="1"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="1"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="1"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="2">8:45 A 9:35</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="2"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="2"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="2"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="2"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="2"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="3">9:35 A 10:25</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="3"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="3"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="3"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="3"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="3"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="4">10:30 A 11:20</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="4"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="4"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="4"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="4"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="4"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="5">11:20 A 12:10</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="5"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="5"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="5"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="5"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="5"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="6">12:15 A 1:10</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="6"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="6"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="6"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="6"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="6"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="7">1:10 A 2:00</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="7"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="7"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="7"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="7"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="7"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="8">2:00 A 2:50</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="8"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="8"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="8"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="8"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="8"></td>
+                        </tr>
+                        <tr>
+                            <td class="neon-border time-slot" data-time="9">2:55 A 3:45</td>
+                            <td class="neon-border subject-cell" data-day="Lunes" data-time="9"></td>
+                            <td class="neon-border subject-cell" data-day="Martes" data-time="9"></td>
+                            <td class="neon-border subject-cell" data-day="Miércoles" data-time="9"></td>
+                            <td class="neon-border subject-cell" data-day="Jueves" data-time="9"></td>
+                            <td class="neon-border subject-cell" data-day="Viernes" data-time="9"></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <div class="controls-wrapper neon-border">
-                 <label for="color-picker" class="color-picker-label" title="Cambiar color neón">
-                     <i class="fas fa-palette"></i>
-                 </label>
-                 <input type="color" id="color-picker" value="#00ccff">
+                <div class="button-container">
+                    <button id="add-subject-btn" class="neon-border neon-text">
+                        <i class="fa-solid fa-plus"></i> Añadir Materia
+                    </button>
 
-                 <button id="export-png-btn" class="icon-button" title="Exportar como PNG">
-                     <i class="fas fa-file-image"></i>
-                 </button>
-            </div>
-             </div>
-    </div>
+                    <div class="controls-wrapper neon-border">
+                        <label for="color-picker" class="color-picker-label" title="Cambiar color neón">
+                            <i class="fas fa-palette"></i>
+                        </label>
+                        <input type="color" id="color-picker" value="#00ccff">
 
-    <div id="add-subject-modal" class="modal">
+                        <button id="export-png-btn" class="icon-button" title="Exportar como PNG">
+                            <i class="fas fa-file-image"></i>
+                        </button>
+                    </div>
+                    </div>
+            </div> <div class="reflection-area neon-text">
+                <p>
+                    A veces te preguntarás si la vida tiene algún sentido... pero en momentos como ese solo te recuerdo esos detalles de la vida como cuando se te eriza la piel con una canción con una que resuena tu alma o tu ser, cuando miras a los ojos de esa persona que amas y sientes esa adrenalina que te hace percibir relativa la noción del tiempo o cuando miras un atardecer de principio a fin, ese tipo de experiencias absorbentes.
+                </p>
+                <p>
+                    No sé qué te motiva a seguir pero lo importante es que aún estás acá dándolo todo. En algún momento todos descubrimos nuestro propósito, el mío es dejar un legado, ya sea en la programación o lo que es más importante para mi, la música por como conecta a las personas, ya que de esta forma  seria una prueba de que vivi y a traves de este legado sería como vivir después de la muerte.
+                </p>
+                <p>
+                    Quizás demores un poco en descubrir tu propósito, pero sabes, nunca es tarde y nunca estás solo/a...
+                </p>
+                <p>
+                ~Danedsant 
+                </p>
+                <p>
+                PD: pulsa la tecla Ctrl mientras eliges las celdas para unir bloques del horario segun lo necesites  
+                </p>
+
+            </div> </div> </div> <div id="add-subject-modal" class="modal">
         <div class="modal-content neon-border">
             <span class="close-button">&times;</span>
             <h2 class="neon-text">Añadir / Editar Materia</h2>
