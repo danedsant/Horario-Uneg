@@ -247,6 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
              scale: 2,
              logging: false, 
              useCORS: true,
+             windowWidth: 1200, 
+             width: 1200
            
         }).then(canvas => {
            
