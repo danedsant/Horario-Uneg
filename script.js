@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmButton = document.getElementById('confirm-add-subject');
     const tableBody = document.querySelector('#schedule-table tbody');
     const addSubjectButton = document.getElementById('add-subject-btn');
-    const containerToExport = document.getElementById('schedule-container'); 
+    const containerToExport = document.querySelector('.schedule-area'); 
     const colorPicker = document.getElementById('color-picker'); 
     const exportButton = document.getElementById('export-png-btn'); 
 
