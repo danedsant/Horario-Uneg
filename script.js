@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    alert("La pagina no esta optimizada para telefonos, usala en PC.");
-    alert("Pulsa la tecla Ctrl mientras eliges las celdas para unir bloques del horario según lo necesites.");
+    
 
     const modal = document.getElementById('add-subject-modal');
     const closeModalButton = modal.querySelector('.close-button');
@@ -297,5 +296,9 @@ document.addEventListener('DOMContentLoaded', () => {
     addSubjectButton.addEventListener('click', openModal);
 
     updateAddButtonState();
+
+    window.onload = function() {
+    alert("Pulsa la tecla Ctrl mientras eliges las celdas para unir bloques del horario según lo necesites.");
+};
 
 }); // 
