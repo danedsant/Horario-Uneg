@@ -1,0 +1,23 @@
+{
+  "name": "horario-uneg",
+  "version": "1.0.0",
+  "description": "Generador de Horario Académico - UNEG",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danedsant/Horario-Uneg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danedsant/Horario-Uneg/issues"
+  },
+  "homepage": "https://github.com/danedsant/Horario-Uneg#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
